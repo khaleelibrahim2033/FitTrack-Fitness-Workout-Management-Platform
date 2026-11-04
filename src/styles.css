@@ -1,0 +1,249 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #24281f;
+  background: #f5f7f2;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  font-smooth: always;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  --ink: #24281f;
+  --muted: #888e83;
+  --line: #e8ebe3;
+  --green: #b7e548;
+  --green-dark: #334813;
+  --paper: #fff;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+.loading-screen { min-height: 100vh; display: grid; place-items: center; color: var(--muted); }
+
+.app-shell { min-height: 100vh; }
+.sidebar { width: 246px; position: fixed; inset: 0 auto 0 0; background: #fff; padding: 32px 19px 20px; border-right: 1px solid #ecefe8; display: flex; flex-direction: column; z-index: 3; }
+.brand { display: flex; align-items: center; gap: 10px; font: 800 20px "Manrope", sans-serif; letter-spacing: -1px; }
+.brand-mark { width: 31px; height: 31px; border-radius: 11px; display: grid; place-items: center; background: var(--green); color: #283713; font: 800 20px "Manrope", sans-serif; }
+.brand-period { color: #91bd30; }
+.workspace-label, .eyebrow { font-size: 10px; letter-spacing: 1.15px; font-weight: 700; }
+.workspace-label { margin: 56px 0 13px 11px; color: #a4a99e; }
+.main-nav { display: grid; gap: 5px; }
+.main-nav a { height: 44px; padding: 0 12px; border-radius: 10px; display: flex; align-items: center; gap: 12px; color: #747a70; font-size: 13px; font-weight: 600; transition: .18s ease; }
+.main-nav a:hover { background: #f7f8f4; color: var(--ink); }
+.main-nav a.active { background: #eff5e3; color: #405c16; }
+.nav-icon { width: 17px; text-align: center; font-size: 18px; line-height: 1; color: #8b9380; }
+.main-nav a.active .nav-icon { color: #638721; }
+.nav-count { margin-left: auto; background: #b7e548; color: #30420f; min-width: 19px; height: 19px; display: grid; place-items: center; border-radius: 10px; font-size: 10px; }
+.sidebar-bottom { margin-top: auto; border-top: 1px solid #eff0ec; padding: 17px 3px 0; display: flex; align-items: center; gap: 10px; }
+.profile-avatar { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: #edf2e3; color: #536e26; font-weight: 700; font-size: 13px; }
+.profile-copy { display: grid; gap: 3px; min-width: 0; }
+.profile-copy strong { font-size: 12px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 125px; }
+.profile-copy span { color: #9a9f95; font-size: 10px; }
+.icon-button { border: 0; background: transparent; color: #898f84; width: 31px; height: 31px; border-radius: 8px; font-size: 18px; display: inline-grid; place-items: center; }
+.icon-button:hover { background: #f1f3ed; color: var(--ink); }
+.signout { margin-left: auto; transform: rotate(45deg); }
+.main-area { margin-left: 246px; min-height: 100vh; }
+.page-content { max-width: 1360px; margin: auto; padding: 48px 56px 64px; }
+.page-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+.eyebrow { color: #84936a; margin: 0 0 11px; }
+.eyebrow.muted { color: #9aa092; }
+.page-header h1 { font: 700 clamp(25px, 3vw, 34px) "Manrope", sans-serif; letter-spacing: -1.3px; margin: 0; line-height: 1.2; }
+.page-subtitle { margin: 8px 0 0; color: #858b80; font-size: 13px; }
+.today-chip { display: flex; align-items: center; gap: 8px; color: #737b69; font-size: 12px; font-weight: 600; background: white; border: 1px solid var(--line); padding: 10px 13px; border-radius: 10px; white-space: nowrap; }
+.today-chip span { width: 7px; height: 7px; border-radius: 50%; background: #a9d943; box-shadow: 0 0 0 3px #eff7dd; }
+.button { border: 0; border-radius: 9px; padding: 11px 15px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-size: 12px; font-weight: 700; transition: .18s ease; white-space: nowrap; }
+.button:disabled { opacity: .6; cursor: wait; }
+.button-primary { background: #26351a; color: #eff8df; box-shadow: 0 3px 8px #27381c18; }
+.button-primary:hover:not(:disabled) { background: #3a5028; transform: translateY(-1px); }
+.button-primary span { font-size: 17px; line-height: 12px; }
+.button-soft { color: #49563c; background: #f0f3ea; }
+.button-soft:hover { background: #e7eddc; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 17px; }
+.stat-card { background: #fff; border: 1px solid #e9ece5; border-radius: 13px; padding: 17px 18px 16px; min-height: 153px; position: relative; }
+.stat-icon { position: absolute; right: 16px; top: 16px; width: 31px; height: 31px; border-radius: 10px; display: grid; place-items: center; font-size: 17px; }
+.stat-icon.lime { background: #f0f7df; color: #759c25; }
+.stat-icon.peach { background: #fff0e6; color: #d88958; }
+.stat-icon.blue { background: #e9f2f6; color: #5584a1; }
+.stat-icon.lavender { background: #f0ebf9; color: #8873ae; }
+.stat-label { color: #81877d; font-size: 11px; font-weight: 600; display: block; margin: 2px 0 13px; }
+.stat-value { font: 700 28px "Manrope", sans-serif; letter-spacing: -1px; }
+.stat-value small { color: #9da296; font: 500 10px "DM Sans", sans-serif; letter-spacing: 0; margin-left: 5px; }
+.stat-detail { color: #a0a59c; font-size: 10px; margin-top: 6px; }
+.content-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(240px, .9fr); gap: 15px; margin-bottom: 17px; }
+.panel { background: #fff; border: 1px solid #e9ece5; border-radius: 13px; padding: 21px 22px; }
+.panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.panel-heading .eyebrow { margin-bottom: 6px; font-size: 9px; }
+.panel-heading h2 { font: 700 17px "Manrope", sans-serif; letter-spacing: -.5px; margin: 0; }
+.chart-panel, .today-panel { min-height: 302px; }
+.chart-wrap { height: 219px; margin-top: 19px; }
+.chart-legend { display: flex; align-items: center; gap: 7px; color: #878e82; font-size: 10px; }
+.chart-legend i { width: 8px; height: 8px; background: #a5ce49; border-radius: 50%; }
+.empty-state { color: #92988d; font-size: 12px; min-height: 100px; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.7; gap: 4px; flex-wrap: wrap; }
+.empty-state a, .text-link { color: #658822; font-weight: 700; }
+.text-link { font-size: 11px; white-space: nowrap; }
+.text-link span { font-size: 15px; margin-left: 4px; }
+.focus-icon { width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; background: #f2f7e7; color: #7ca62b; }
+.focus-count { font: 700 41px "Manrope", sans-serif; letter-spacing: -2px; margin-top: 29px; }
+.focus-count span { color: #b9beb4; font-size: 21px; font-weight: 500; }
+.focus-caption { margin: 1px 0 14px; color: #92988d; font-size: 11px; }
+.focus-progress, .goal-track { height: 6px; border-radius: 5px; background: #eef0e9; overflow: hidden; }
+.focus-progress i, .goal-track i { display: block; height: 100%; background: #a8d63e; border-radius: inherit; transition: width .3s ease; }
+.focus-note { color: #888f83; line-height: 1.6; font-size: 11px; margin: 15px 0 16px; }
+.recent-panel { margin-bottom: 16px; }
+.recent-panel > .panel-heading { margin-bottom: 16px; }
+.workout-list { display: grid; }
+.workout-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #f0f1ed; min-width: 0; }
+.workout-type-icon { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; flex: 0 0 auto; font-size: 17px; }
+.workout-type-icon.cardio { background: #eff6e2; color: #779b2c; }
+.workout-type-icon.strength { background: #f1ecf8; color: #8976ae; }
+.workout-type-icon.yoga { background: #fdf0e8; color: #ca8b61; }
+.workout-name { display: grid; gap: 4px; min-width: 0; flex: 1; }
+.workout-name strong { font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.workout-name span { color: #989e94; font-size: 10px; }
+.workout-metric { display: flex; align-items: baseline; gap: 4px; min-width: 52px; justify-content: flex-end; }
+.workout-metric strong { font-size: 12px; }
+.workout-metric span { color: #a2a79e; font-size: 10px; }
+.calories { min-width: 68px; }
+.row-actions { display: flex; margin-left: 2px; }
+.danger-hover:hover { color: #bb5651; background: #fff0ee; }
+.title-count { font: 500 10px "DM Sans", sans-serif; color: #858c7e; border-radius: 10px; background: #f0f2ec; padding: 4px 7px; margin-left: 5px; vertical-align: 2px; }
+.form-panel { margin-bottom: 17px; }
+.form-panel .panel-heading { margin-bottom: 20px; }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+.form-grid label, .form-stack label { display: grid; gap: 7px; color: #656c60; font-size: 11px; font-weight: 600; }
+.form-grid input, .form-grid select, .form-stack input, .month-picker input { height: 42px; border: 1px solid #e6e9e1; border-radius: 8px; padding: 0 11px; color: #32372e; outline: none; background: #fff; font-size: 12px; width: 100%; }
+.form-grid input:focus, .form-grid select:focus, .form-stack input:focus, .month-picker input:focus { border-color: #9dbd5c; box-shadow: 0 0 0 3px #b7e54822; }
+.form-actions { display: flex; justify-content: flex-end; gap: 9px; }
+.full-width { grid-column: 1/-1; }
+.form-error { color: #a94442; background: #fff2f0; border: 1px solid #f5d9d4; border-radius: 8px; padding: 10px 12px; font-size: 11px; }
+.goal-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; }
+.goal-card { padding: 20px; }
+.goal-card-top { display: flex; align-items: center; margin-bottom: 22px; gap: 8px; }
+.goal-symbol { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; background: #eff5e4; color: #729425; font-size: 20px; }
+.status-pill { text-transform: capitalize; border-radius: 20px; padding: 5px 8px; font-size: 9px; font-weight: 700; background: #f1f3ed; color: #828a78; }
+.status-pill.completed { background: #edf6dc; color: #648421; }
+.status-pill.overdue { background: #fff0ec; color: #b5614d; }
+.goal-delete { margin-left: auto; }
+.goal-card .eyebrow { font-size: 9px; margin-bottom: 6px; }
+.goal-card h2 { font: 700 17px "Manrope", sans-serif; margin: 0 0 20px; }
+.goal-progress-copy { margin-bottom: 9px; }
+.goal-progress-copy strong { font: 700 24px "Manrope", sans-serif; letter-spacing: -.7px; }
+.goal-progress-copy span { color: #9da296; font-size: 11px; }
+.goal-card-foot { display: flex; justify-content: space-between; color: #90978b; font-size: 10px; margin-top: 9px; }
+.goal-update { margin-top: 20px; width: 100%; justify-content: space-between; }
+.month-picker { display: grid; gap: 5px; color: #9aa092; font-size: 9px; letter-spacing: .8px; font-weight: 700; }
+.month-picker input { width: 155px; height: 39px; }
+.report-stats { margin-bottom: 16px; }
+.report-chart-panel { margin-bottom: 16px; }
+.report-chart { height: 310px; margin-top: 16px; }
+.range-label { font-size: 10px; color: #949a8f; }
+.weekly-snapshot { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 15px; }
+.weekly-snapshot div { display: grid; gap: 6px; padding: 10px 13px; border-left: 1px solid #edf0e9; }
+.weekly-snapshot div:first-child { border-left: 0; padding-left: 0; }
+.weekly-snapshot strong { font: 700 23px "Manrope", sans-serif; letter-spacing: -.6px; }
+.weekly-snapshot strong small { color: #a2a89c; font-size: 12px; font-weight: 500; }
+.weekly-snapshot span { color: #91978c; font-size: 10px; }
+.notification-panel { max-width: 900px; }
+.notification-list { margin-top: 15px; }
+.notification-item { width: 100%; text-align: left; border: 0; border-top: 1px solid #eff1ec; background: transparent; padding: 16px 3px; display: flex; align-items: flex-start; gap: 13px; transition: background .15s ease; }
+.notification-item:hover { background: #fafbf8; }
+.notification-mark { width: 35px; height: 35px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 11px; background: #f0f6e5; color: #789a37; font-size: 16px; }
+.notification-copy { display: grid; gap: 5px; flex: 1; }
+.notification-copy strong { font-size: 12px; }
+.notification-copy > span { color: #777e72; font-size: 11px; line-height: 1.5; }
+.notification-copy small { color: #a1a69d; font-size: 9px; }
+.notification-item.read .notification-copy strong { color: #777d73; font-weight: 500; }
+.unread-dot { width: 7px; height: 7px; border-radius: 50%; background: #a4d63d; margin: 7px 5px 0 0; }
+
+.auth-page { min-height: 100vh; display: grid; grid-template-columns: minmax(390px, .94fr) 1.06fr; background: #fff; }
+.auth-art { background: #25351b; min-height: 100vh; padding: 34px 8%; color: #f3f5ed; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.auth-brand { z-index: 1; color: #f3f5ed; }
+.auth-art .brand-mark { background: #b7e548; }
+.art-copy { position: relative; z-index: 1; margin: auto 0; max-width: 440px; padding-bottom: 35px; }
+.art-copy .eyebrow { color: #b8d67d; display: flex; align-items: center; gap: 8px; }
+.pulse-dot { width: 7px; height: 7px; border-radius: 50%; background: #b7e548; box-shadow: 0 0 0 5px #b7e54820; }
+.art-copy h1 { font: 700 clamp(45px, 5.2vw, 70px) "Manrope", sans-serif; letter-spacing: -3.2px; line-height: 1.07; margin: 20px 0; }
+.art-copy h1 em { color: #b7e548; font-style: normal; }
+.art-copy p { color: #c4cbb9; max-width: 340px; font-size: 14px; line-height: 1.8; }
+.art-stat { display: flex; align-items: center; gap: 13px; z-index: 1; border-top: 1px solid #ffffff20; padding-top: 20px; margin-top: auto; }
+.stat-spark { width: 37px; height: 37px; background: #344a25; color: #b7e548; display: grid; place-items: center; border-radius: 12px; font-size: 19px; }
+.art-stat > span:nth-child(2) { display: grid; gap: 4px; }
+.art-stat strong { font-size: 11px; }
+.art-stat small { color: #aab49b; font-size: 10px; }
+.stat-bars { margin-left: auto; display: flex; align-items: end; gap: 4px; height: 31px; }
+.stat-bars i { width: 4px; border-radius: 4px; background: #b7e548; opacity: .65; }
+.stat-bars i:nth-child(1), .stat-bars i:nth-child(5) { height: 11px; opacity: .35; }
+.stat-bars i:nth-child(2), .stat-bars i:nth-child(6) { height: 17px; opacity: .5; }
+.stat-bars i:nth-child(3), .stat-bars i:nth-child(7) { height: 23px; opacity: .75; }
+.stat-bars i:nth-child(4) { height: 31px; }
+.art-orb { position: absolute; border: 1px solid #ffffff0a; border-radius: 50%; pointer-events: none; }
+.orb-one { width: 590px; height: 590px; right: -310px; top: 20%; box-shadow: 0 0 0 40px #ffffff03, 0 0 0 80px #ffffff02; }
+.orb-two { width: 400px; height: 400px; right: -210px; top: 30%; }
+.auth-form-side { display: grid; place-items: center; padding: 40px; }
+.auth-form-wrap { width: min(390px, 100%); }
+.auth-form-wrap > .eyebrow { margin: 0 0 13px; }
+.auth-form-wrap h2 { font: 700 30px "Manrope", sans-serif; letter-spacing: -1.2px; margin: 0; }
+.form-subtitle { color: #90968b; font-size: 12px; margin: 9px 0 26px; }
+.form-stack { display: grid; gap: 16px; }
+.form-stack input { height: 46px; }
+.submit-button { width: 100%; height: 45px; margin-top: 4px; }
+.submit-button span { margin-left: auto; }
+.auth-switch { text-align: center; color: #868d81; font-size: 11px; margin: 22px 0; }
+.auth-switch a { color: #5f7f26; font-weight: 700; margin-left: 3px; }
+.auth-privacy { text-align: center; border-top: 1px solid #edf0e9; padding-top: 17px; color: #a5aa9f; font-size: 10px; }
+.mobile-auth-brand { display: none; }
+
+@media (max-width: 1100px) {
+  .page-content { padding: 38px 32px 50px; }
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .goal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .sidebar { width: 100%; height: 62px; inset: auto 0 0; padding: 6px 9px; flex-direction: row; align-items: center; border-right: 0; border-top: 1px solid #ecefe8; }
+  .sidebar > .brand, .workspace-label, .sidebar-bottom { display: none; }
+  .main-nav { width: 100%; display: flex; justify-content: space-around; gap: 2px; }
+  .main-nav a { height: 48px; padding: 4px 6px; display: flex; flex-direction: column; justify-content: center; gap: 2px; font-size: 9px; flex: 1; position: relative; }
+  .nav-icon { font-size: 17px; }
+  .nav-count { position: absolute; margin: 0; top: 1px; right: calc(50% - 19px); min-width: 15px; height: 15px; font-size: 8px; }
+  .main-area { margin-left: 0; padding-bottom: 62px; }
+  .page-content { padding: 30px 19px 35px; }
+  .page-header { align-items: flex-start; flex-direction: column; gap: 16px; margin-bottom: 22px; }
+  .page-header h1 { font-size: 27px; }
+  .today-chip { align-self: flex-start; }
+  .stats-grid { gap: 10px; }
+  .stat-card { min-height: 140px; padding: 14px; }
+  .stat-icon { right: 12px; top: 12px; width: 28px; height: 28px; }
+  .stat-value { font-size: 24px; }
+  .content-grid { grid-template-columns: 1fr; }
+  .chart-panel { min-height: 290px; }
+  .today-panel { min-height: unset; }
+  .focus-count { margin-top: 20px; }
+  .goal-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .full-width { grid-column: auto; }
+  .weekly-snapshot { grid-template-columns: repeat(2, 1fr); row-gap: 14px; }
+  .weekly-snapshot div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .weekly-snapshot div:nth-child(2) { border-left: 1px solid #edf0e9; }
+  .range-label { display: none; }
+  .workout-row { gap: 8px; }
+  .workout-metric { min-width: 43px; }
+  .calories { min-width: 55px; }
+  .row-actions .icon-button { width: 26px; }
+  .auth-page { grid-template-columns: 1fr; }
+  .auth-art { display: none; }
+  .auth-form-side { min-height: 100vh; padding: 28px 24px; }
+  .mobile-auth-brand { display: flex; align-items: center; gap: 9px; font: 800 18px "Manrope", sans-serif; margin-bottom: 55px; }
+  .mobile-auth-brand .brand-mark { margin-right: 1px; }
+}
+@media (max-width: 390px) {
+  .page-content { padding-left: 13px; padding-right: 13px; }
+  .stats-grid { gap: 8px; }
+  .stat-card { padding: 12px; }
+  .stat-value { font-size: 21px; }
+  .panel { padding: 17px 15px; }
+  .workout-metric.calories { display: none; }
+}
